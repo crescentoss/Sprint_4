@@ -3,7 +3,7 @@ package ru.yandex.practicum.constants;
 public class Constants {
 
     public static class ServerName{
-        public static String URL = "https://qa-scooter.praktikum-services.ru/";
+        public static String URL = "https://qa-scooter.praktikum-services.ru/";//
     }
 
     public static class Colours{

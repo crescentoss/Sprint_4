@@ -11,7 +11,7 @@ import java.time.Duration;
 public class RentPage {
     private WebDriver driver;
     // кнопка "Заказать" в заголовке страницы
-    private By editDate = By.xpath(".//input[@placeholder='* Когда привезти самокат']");
+    private By editDate = By.xpath(".//input[@placeholder='* Когда привезти самокат']");//
 
     // выпадающий список "Срок аренды"
     private By listPeriod = By.className("Dropdown-placeholder");

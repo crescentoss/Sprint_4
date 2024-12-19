@@ -41,7 +41,7 @@ public class OrderParamTest {
     public OrderParamTest(boolean isHeaderOrder, String name, String surName,
                           String address, String station, String phone,
                           String date, String period, String colour, String comment) {
-        this.isHeaderOrder = isHeaderOrder;
+        this.isHeaderOrder = isHeaderOrder;//
         this.name = name;
         this.surName = surName;
         this.address = address;

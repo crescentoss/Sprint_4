@@ -25,7 +25,7 @@ import static org.hamcrest.CoreMatchers.is;
 @RunWith(Parameterized.class)
 public class FaqTestParam {
 
-    private final String question;
+    private final String question;//
     private final String answer;
     WebDriver driver;
 

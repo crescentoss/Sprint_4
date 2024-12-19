@@ -11,7 +11,7 @@ import java.time.Duration;
 public class CustomerPage {
     private WebDriver driver;
     // поле  "Имя"
-    private By editName = By.xpath(".//input[@placeholder='* Имя']");
+    private By editName = By.xpath(".//input[@placeholder='* Имя']");//
 
     // поле  "Фамилия"
     private By editSubName = By.xpath(".//input[@placeholder='* Фамилия']");

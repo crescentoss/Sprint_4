@@ -12,7 +12,7 @@ public class HomePage {
 
     private WebDriver driver;
     // кнопка "Заказать" в заголовке страницы
-    private By headerOrder = By.xpath(".//div[@class='Header_Nav__AGCXC']/button[@class='Button_Button__ra12g']");
+    private By headerOrder = By.xpath(".//div[@class='Header_Nav__AGCXC']/button[@class='Button_Button__ra12g']");//
 
     // кнопка "Заказать" в середине страницы
     private By pageOrder = By.xpath(".//div[@class='Home_FinishButton__1_cWm']/button");
