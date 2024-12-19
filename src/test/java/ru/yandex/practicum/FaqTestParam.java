@@ -7,20 +7,15 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
+import ru.yandex.practicum.pages.HomePage;
 
 import static org.hamcrest.CoreMatchers.is;
+import static ru.yandex.practicum.constants.Constants.ServerName.URL;
 
 @RunWith(Parameterized.class)
 public class FaqTestParam {
@@ -50,10 +45,9 @@ public class FaqTestParam {
 
     @Before
     public void setUp(){
+
         WebDriverManager.chromedriver().setup();
-    }
-    @Test
-    public void checkFaq(){
+
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
         this.driver = new ChromeDriver(options);
@@ -64,24 +58,16 @@ public class FaqTestParam {
 //        this.driver = new FirefoxDriver(options);
 //        this.driver = new FirefoxDriver();
 
-        driver.get("https://qa-scooter.praktikum-services.ru/");
+        driver.get(URL);
+    }
+    @Test
+    public void checkFaq(){
 
+        HomePage homePage = new HomePage(driver);
+        homePage.moveToAccordionFAQ();
 
-        WebElement element = driver.findElement(By.className("accordion"));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-
-        String s_path = ".//div[text() = '" + question + "']";
-        By textPath = By.xpath(s_path+"/following::div/p");
-
-        new WebDriverWait(driver, Duration.ofSeconds(3))
-                .until(ExpectedConditions.elementToBeClickable(By.xpath(s_path)));
-        driver.findElement(By.xpath(s_path)).click();
-
-        new WebDriverWait(driver, Duration.ofSeconds(3))
-                .until(ExpectedConditions.visibilityOfElementLocated(textPath));
-
-        MatcherAssert.assertThat(driver.findElement(textPath).getText(), is(answer));
-
+        homePage.openQuestionFAQ(question);
+        MatcherAssert.assertThat(homePage.getAnswerFAQ(question), is(answer));
     }
     @After
     public void tearDown(){

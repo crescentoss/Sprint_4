@@ -51,6 +51,9 @@ public class CustomerPage {
     }
 
     public void setEditPhone(String phone) {
+        new WebDriverWait(driver, Duration.ofSeconds(3))
+                .until(ExpectedConditions.elementToBeClickable(editPhone));
+
         driver.findElement(editPhone).sendKeys(phone);
     }
 

@@ -64,9 +64,7 @@ public class OrderParamTest {
     @Before
     public void setUp(){
         WebDriverManager.chromedriver().setup();
-    }
-    @Test
-    public void createOrder(){
+
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
         this.driver = new ChromeDriver(options);
@@ -77,6 +75,9 @@ public class OrderParamTest {
 //        this.driver = new FirefoxDriver(options);
 //        this.driver = new FirefoxDriver();
         driver.get(URL);
+    }
+    @Test
+    public void createOrder(){
 
         HomePage homePage = new HomePage(driver);
         homePage.confirmCookie();
@@ -94,6 +95,6 @@ public class OrderParamTest {
     }
     @After
     public void tearDown(){
-//        driver.quit();
+       driver.quit();
     }
 }
